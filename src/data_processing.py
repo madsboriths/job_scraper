@@ -6,12 +6,9 @@ import re
 DEFAULT_PATH = "data/stash.json"
 
 def extract_json_from_soup(soup: BeautifulSoup, save_to_file: bool = False) -> List[dict]:
-    titles = []
-    descriptions = []
     scripts = soup.find_all("script")
     for script in scripts:
         if script.string and "var Stash" in script.string:
-            # print(script.string[:200])
             pattern = r"var\s+Stash\s*=\s*(\{.*?\});"
             match = re.search(pattern, script.string, flags=re.DOTALL)
             if match:
@@ -22,7 +19,7 @@ def extract_json_from_soup(soup: BeautifulSoup, save_to_file: bool = False) -> L
         with open("data/stash.json", "w", encoding="utf-8") as f:
             json.dump(parsed_json, f, indent=2, ensure_ascii=False)
 
-def get_jobs_list(path=None):
+def get_jobs_list(path: str = None) -> List:
     if path is None:
         path = DEFAULT_PATH
 
