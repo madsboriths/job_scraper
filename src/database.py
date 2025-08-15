@@ -16,23 +16,21 @@ def get_connection() -> sqlite3.Connection:
     conn.row_factory = sqlite3.Row
     return conn
 
-def create_table_with_primary_key(conn:sqlite3.Connection, table: str, pk: str, data: Mapping[str, object])-> None:
+def create_table_with_primary_key(conn:sqlite3.Connection, table: str, pk: str, data: list[str])-> None:
     if pk not in data:
         raise ValueError(f"Primary key '{pk}' missing in data")
     
-    cols = list(data.keys())
-    types = [SQLITE_TYPE_MAP[type(data[col])] for col in cols]
+    data = [col for col in data if col != pk]
 
-    for name, col_type in zip(cols, types):
-        print(name, col_type)
+    types = [SQLITE_TYPE_MAP[type(col)] for col in data]
 
-    col_defs = ", ".join(f"{name} {col_type}" for name, col_type in zip(cols, types))
+    col_defs = ", ".join(f"{name} {col_type}" for name, col_type in zip(data, types))
     sql_query = f"""
         CREATE TABLE IF NOT EXISTS {table}
-        ({pk} TEXT PRIMARY KEY, {col_defs}"""
+        ({pk} TEXT PRIMARY KEY, {col_defs})"""
     conn.execute(sql_query)
 
-def upsert_job(conn:sqlite3.Connection, table: str, pk: str, data: Mapping[str, object])-> None:
+def upsert(conn:sqlite3.Connection, table: str, pk: str, data: Mapping[str, object])-> None:
     if pk not in data:
         raise ValueError(f"Primary key '{pk}' missing in data") 
     
@@ -49,13 +47,11 @@ def upsert_job(conn:sqlite3.Connection, table: str, pk: str, data: Mapping[str, 
             {update_assign}
     """ 
     conn.execute(sql_query)
+    
+def remove_element(conn:sqlite3.Connection, table: str, tid: str) -> None:
+    sql_query = f"DELETE FROM {table} WHERE tid = ?"
+    conn.execute(sql_query, (tid,))
 
-if __name__ == "__main__":
-    conn = get_connection()
-    create_table_with_primary_key(conn, "jobs", "tid", {
-        "tid": "12345",
-        "title": "Software Engineer",
-        "company": "Tech Company",
-        "description": "Developing software solutions."
-        })
-    conn.commit()
+def delete_table_if_exists(conn:sqlite3.Connection, table: str) -> None:
+    sql_query = f"DROP TABLE IF EXISTS {table}"
+    conn.execute(sql_query)

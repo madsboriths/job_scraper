@@ -14,9 +14,5 @@ def extract_jobs(num_jobs: int = typer.Option(None, "--num-jobs", "-n",
         print("Failed to retrieve jobs...")
     pass
 
-@app.command()
-def func():
-    pass
-
 if __name__ == "__main__":
     app()
