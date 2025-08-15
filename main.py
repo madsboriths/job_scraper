@@ -1,4 +1,4 @@
-from src.pipeline import scrape_and_store
+from src.retrieval.pipeline import scrape_and_store
 import logging
 import typer
 
@@ -28,6 +28,7 @@ def extract_jobs(url: str = typer.Option(JOBINDEX_URL, "--url", "-u",
         logger.info("Scraping completed successfully.")
     except Exception as e:
         typer.echo(f"An error occurred: {e}")
+
 
 if __name__ == "__main__":
     app()

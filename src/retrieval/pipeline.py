@@ -7,11 +7,11 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-SLEEP_MIN = 1.8
-SLEEP_MAX = 5.4
-LONG_PAUSE_EVERY = 14
-LONG_PAUSE_MIN = 35.0
-LONG_PAUSE_MAX = 60.0
+SLEEP_MIN = 1.2
+SLEEP_MAX = 3.8
+LONG_PAUSE_EVERY = 16
+LONG_PAUSE_MIN = 10.0
+LONG_PAUSE_MAX = 24.0
 
 def scrape_and_store(base_url, max_jobs=1, max_pages=1, starting_page=1):
     num_jobs = 0
@@ -33,17 +33,22 @@ def scrape_and_store(base_url, max_jobs=1, max_pages=1, starting_page=1):
                     logger.info(f"Processing job {job['tid']} from page {page}...")
                     random_sleep(SLEEP_MIN, SLEEP_MAX)
                     job_html = fetch_html(job["url"])
-                    job_data = {
-                        "tid": job["tid"],
-                        "title": job["headline"],
-                        "company": job["companytext"],
-                        "description": strip_html(job_html)
-                    }
+                    try:
+                        job_data = {
+                            "tid": job["tid"],
+                            "title": job["headline"],
+                            "company": job["companytext"],
+                            "description": strip_html(job_html)
+                        }
+                    except Exception as e:
+                        logger.error(f"Error processing job {job['tid']}: {e}")
+                        continue
                     upsert(conn, "jobs", "tid", job_data)
                     num_jobs += 1
                     if num_jobs % LONG_PAUSE_EVERY == 0:
                         logger.info(f"Pausing for a longer duration after {num_jobs} jobs...")
                         random_sleep(LONG_PAUSE_MIN, LONG_PAUSE_MAX)
+                    conn.commit()
                 else:
                     break
             num_pages += 1
