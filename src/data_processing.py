@@ -4,15 +4,14 @@ from pathlib import Path
 import json
 import re
 
-from .scrape import fetch_html
-
-DATA_DIRECTORY = Path("data/")
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIRECTORY = PROJECT_ROOT / "data"
 STASH_RE = re.compile(r"var\s+Stash\s*=\s*(\{.*?\});", re.DOTALL)
 
 class StashNotFound(Exception): ...
 class JobsShapeError(Exception): ...
 
-def find_stash_json_string(html_soup: BeautifulSoup) -> str:
+def extract_stash_text_string(html_soup: BeautifulSoup) -> str:
     for script in html_soup.find_all("script"):
         text = script.string or script.get_text() or ""
         m = STASH_RE.search(text)
@@ -41,13 +40,8 @@ def load_json(path: Path) -> Dict[str, Any]:
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
 
-# if __name__ == "__main__":
-#     json_stash = load_json(DATA_DIRECTORY / "stash.json")
-#     jobs = extract_jobs_from_stash_dict(json_stash)
-#     for job in jobs[:2]:
-#         job_title = job["headline"]
-#         job_url = job["url"]
-
-#         stash_json_string = find_stash_json_string(fetch_html(job_url))
-#         stash_dict = json_string_to_dict(stash_json_string)
-#         save_json(stash_dict, DATA_DIRECTORY / f"{job_title}" / "stash.json")
+if __name__ == "__main__":
+    json_stash = load_json(DATA_DIRECTORY / "stash.json")
+    jobs = extract_jobs_from_stash_dict(json_stash)
+    for job in jobs[:2]:
+        print(job["tid"])

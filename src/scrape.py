@@ -9,6 +9,7 @@ headers = {
     "Access-Control-Max-Age": "3600"
 }
 
+# TODO: Add capability of caching
 def fetch_html(url: str) -> BeautifulSoup:
     req = requests.get(url, headers=headers)
     soup = BeautifulSoup(req.text, "html.parser")
