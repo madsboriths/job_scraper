@@ -1,19 +1,21 @@
-from src.scrape import fetch_html
+from src.pipeline import scrape_and_store
 
 import typer
 
 app = typer.Typer()
 INITIAL_SEARCH_URL = "https://www.jobindex.dk/jobsoegning?geoareaid=1221&geoareaid=56&geoareaid=15182&geoareaid=15178&subid=1&subid=2&subid=3&subid=4&subid=6&subid=7&subid=93"
 
-@app.command()
-def scrape_jobs():
+@app.command("extract-jobs")
+def extract_jobs(num_jobs: int = typer.Option(None, "--num-jobs", "-n",
+                                              help="Specify maximum number of jobs to scrape")):
     try:
-        html_soup = fetch_html(INITIAL_SEARCH_URL)
-        typer.echo(html_soup.prettify())
-        # stash_text = find_stash_json_string(html_soup)
-        # jobs = get_jobs_list_from_path(stash_text)
+        scrape_and_store()        
     except:
         print("Failed to retrieve jobs...")
+    pass
+
+@app.command()
+def func():
     pass
 
 if __name__ == "__main__":
