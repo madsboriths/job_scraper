@@ -19,9 +19,6 @@ def extract_stash_text(html_soup: BeautifulSoup) -> str:
     except Exception as e:
         raise StashNotFound("Could not find 'var Stash = { ... } in any <script> tag") from e
     
-def strip_html(html_soup: BeautifulSoup) -> str:
-    pass
-
 def convert_to_json(json_string: str) -> Dict[str, Any]:
     try:
         return json.loads(json_string)
