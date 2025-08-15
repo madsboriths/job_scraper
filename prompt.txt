@@ -1,0 +1,7 @@
+You are given raw HTML of a job posting page. 
+Extract ONLY the main job description text intended for a human reader. 
+Exclude headers, menus, sidebars, contact details, maps, ads, application forms, and ANY unrelated content. 
+Keep the text in readable paragraphs with line breaks between them. 
+Do NOT include HTML tags in the output, only plain text.
+Do NOT ever include anything else. Do not write personal messages, or updates on progress etc. 
+If no relevant text is found, simply return nothing

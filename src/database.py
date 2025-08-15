@@ -17,7 +17,7 @@ def get_connection() -> sqlite3.Connection:
     return conn
 
 def create_table_with_primary_key(conn:sqlite3.Connection, table: str, pk: str, data: list[str])-> None:
-    if pk not in data:
+    if pk not in data.keys():
         raise ValueError(f"Primary key '{pk}' missing in data")
     
     data = [col for col in data if col != pk]
@@ -31,7 +31,7 @@ def create_table_with_primary_key(conn:sqlite3.Connection, table: str, pk: str, 
     conn.execute(sql_query)
 
 def upsert(conn:sqlite3.Connection, table: str, pk: str, data: Mapping[str, object])-> None:
-    if pk not in data:
+    if pk not in data.keys():
         raise ValueError(f"Primary key '{pk}' missing in data") 
     
     cols = list(data.keys())
@@ -46,7 +46,7 @@ def upsert(conn:sqlite3.Connection, table: str, pk: str, data: Mapping[str, obje
         ON CONFLICT ({pk}) DO UPDATE SET
             {update_assign}
     """ 
-    conn.execute(sql_query)
+    conn.execute(sql_query, tuple(data.values()))
     
 def remove_element(conn:sqlite3.Connection, table: str, tid: str) -> None:
     sql_query = f"DELETE FROM {table} WHERE tid = ?"

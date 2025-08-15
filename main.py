@@ -6,8 +6,8 @@ app = typer.Typer()
 
 JOBINDEX_URL = "https://www.jobindex.dk/jobsoegning?geoareaid=1221&geoareaid=56&geoareaid=15182&geoareaid=15178&subid=1&subid=2&subid=3&subid=4&subid=6&subid=7&subid=93"
 
-MAX_PAGES = 3
-MAX_JOBS = 3
+MAX_PAGES = 1
+MAX_JOBS = 1
 
 @app.command("extract-jobs")
 def extract_jobs(url: str = typer.Option(JOBINDEX_URL, "--url", "-u",
