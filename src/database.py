@@ -1,6 +1,8 @@
 import sqlite3
 from pathlib import Path
 
+from typing import Mapping
+
 DB_PATH = Path("jobs.db")
 
 def get_connection() -> sqlite3.Connection:
@@ -18,19 +20,33 @@ def init_db() -> None:
             description TEXT
         );
         """)
+        conn.commit()
 
-def upsert_job(tid, title, company, description):
-    query = """
-        INSERT INTO jobs(tid, job, company, description)
-        VALUES (?,?,?,?)
-        ON CONLFICT(tid) DO UPDATE SET
-            title = excluded.title
-            company = excluded.company
-            description = excluded.description
-        """
-    get_connection().execute(query, (tid,title,company,description))
+def upsert_job(conn:sqlite3.Connection, table: str, pk: str, data: Mapping[str, object])-> None:
+    if pk not in data:
+        raise ValueError(f"Primary key '{pk}' missing in data") 
+    
+    cols = list(data.keys())
+    placeholders = ",".join(["?"] * len(cols))
+
+    update_cols = [c for c in cols if c != pk]
+    update_assign = ",".join([f"{c}=excluded.{c}" for c in update_cols])
+
+    sql = f"""
+        INSERT INTO {table} ({",".join(cols)})
+        VALUES ({placeholders})
+        ON CONFLICT ({pk}) DO UPDATE SET
+            {update_assign}
+    """ 
+    print(sql)
 
 if __name__ == "__main__":
-    # init_db()
-    # conn.commit()
-    pass
+    conn = get_connection()
+    # upsert_job(conn, "jobs", "tid", {
+    #     "tid": "12345",
+    #     "title": "Software Engineer",
+    #     "company": "Tech Company",
+    #     "description": "Developing software solutions.",
+    #     "status": "interested"
+    # })
+    conn.commit()
