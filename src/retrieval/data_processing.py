@@ -17,7 +17,7 @@ class StashNotFound(Exception): ...
 class JobsShapeError(Exception): ...
 
 def strip_html(html: str) -> str:
-    prompt_path = Path("prompts/system_prompt.txt")
+    prompt_path = Path("prompts/retrieval_prompt.txt")
 
     with open(prompt_path, "r", encoding="utf-8") as file:
         prompt = file.read().strip()

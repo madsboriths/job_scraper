@@ -1,4 +1,4 @@
-from src.pipeline import scrape_and_store
+from src.retrieval.pipeline import scrape_and_store
 import logging
 import typer
 

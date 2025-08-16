@@ -1,0 +1,163 @@
+{
+  "job_id": "schur_automation_software_engineer_horsens",
+  "roles": [
+    {
+      "canonical": "software_engineer",
+      "raw": "Software Engineer",
+      "confidence": 0.92
+    },
+    {
+      "canonical": "automation_engineer",
+      "raw": "Automation Engineer",
+      "confidence": 0.65
+    }
+  ],
+  "skills": {
+    "languages": [],
+    "programming_languages": [
+      {
+        "canonical": "ladder_logic",
+        "raw": "ladder logic",
+        "confidence": 0.7
+      },
+      {
+        "canonical": "structured_text",
+        "raw": "structured text",
+        "confidence": 0.75
+      }
+    ],
+    "frameworks": [
+      {
+        "canonical": "scada_hmi",
+        "raw": "SCADA/HMI systems",
+        "confidence": 0.8
+      }
+    ],
+    "cloud": [],
+    "databases": [],
+    "devops": [
+      {
+        "canonical": "version_control",
+        "raw": "versionsstyring",
+        "confidence": 0.8
+      }
+    ],
+    "bi_analytics": [],
+    "ml_dl": [],
+    "data_tools": [
+      {
+        "canonical": "opc_ua",
+        "raw": "OPC UA",
+        "confidence": 0.9
+      },
+      {
+        "canonical": "modbus",
+        "raw": "Modbus",
+        "confidence": 0.9
+      },
+      {
+        "canonical": "profinet",
+        "raw": "Profinet",
+        "confidence": 0.9
+      }
+    ],
+    "platforms": [
+      {
+        "canonical": "tia_portal",
+        "raw": "Siemens TIA Portal",
+        "confidence": 0.9
+      },
+      {
+        "canonical": "ecostruxure_machine_expert",
+        "raw": "Schneider EcoStruxure Machine Expert",
+        "confidence": 0.9
+      },
+      {
+        "canonical": "studio_5000",
+        "raw": "Rockwell Studio 5000",
+        "confidence": 0.9
+      }
+    ],
+    "methodologies": [
+      {
+        "canonical": "fat",
+        "raw": "FAT-tests",
+        "confidence": 0.8
+      },
+      {
+        "canonical": "sat",
+        "raw": "SAT-tests",
+        "confidence": 0.8
+      }
+    ],
+    "certifications": [],
+    "soft_skill": [
+      {
+        "canonical": "communication",
+        "raw": "kommunikere klart og præcist – både med kolleger og kunder",
+        "confidence": 0.78
+      },
+      {
+        "canonical": "hands_on",
+        "raw": "hands-on ude på kundens anlæg",
+        "confidence": 0.78
+      },
+      {
+        "canonical": "structured_work",
+        "raw": "struktureret arbejde",
+        "confidence": 0.65
+      },
+      {
+        "canonical": "problem_solving",
+        "raw": "løsningsorienteret tilgang til opgaverne",
+        "confidence": 0.72
+      },
+      {
+        "canonical": "teamwork",
+        "raw": "samarbejde med kolleger",
+        "confidence": 0.7
+      }
+    ],
+    "other": [
+      {
+        "canonical": "electrical_diagrams",
+        "raw": "el-diagrammer",
+        "confidence": 0.6
+      },
+      {
+        "canonical": "industrial_automation",
+        "raw": "industriel automation",
+        "confidence": 0.5
+      }
+    ]
+  },
+  "other_notables": [
+    {
+      "canonical": "fanuc",
+      "raw": "Fanuc",
+      "type": "other",
+      "confidence": 0.85
+    },
+    {
+      "canonical": "universal_robots",
+      "raw": "UR",
+      "type": "other",
+      "confidence": 0.75
+    }
+  ],
+  "seniority": {
+    "level": "unspecified",
+    "confidence": 0.4
+  },
+  "employment": {
+    "type": "full-time",
+    "confidence": 0.9
+  },
+  "location": {
+    "text": "Horsens, Denmark",
+    "remote": "no"
+  },
+  "model_info": {
+    "version": "job_extraction_v1"
+  }
+}

@@ -48,10 +48,30 @@ def upsert(conn:sqlite3.Connection, table: str, pk: str, data: Mapping[str, obje
     """ 
     conn.execute(sql_query, tuple(data.values()))
     
-def remove_element(conn:sqlite3.Connection, table: str, tid: str) -> None:
-    sql_query = f"DELETE FROM {table} WHERE tid = ?"
+def retrieve_row_from_table(conn: sqlite3.Connection, table: str, pk: str, tid: str):
+    sql_query = f"SELECT * FROM {table} WHERE {pk} = ?"
+    return conn.execute(sql_query, (tid,)).fetchone()
+
+def delete_row_from_table(conn:sqlite3.Connection, table: str, pk:str, tid: str) -> None:
+    sql_query = f"DELETE FROM {table} WHERE {pk} = ?"
     conn.execute(sql_query, (tid,))
+
+def update_row_in_table(conn:sqlite3.Connection, table: str, pk: str, tid: str, data: Mapping[str, object]) -> None:
+    if pk not in data.keys():
+        raise ValueError(f"Primary key '{pk}' missing in data")
+    
+    cols = list(data.keys())
+    placeholders = ",".join([f"{col}=?" for col in cols])
+    
+    sql_query = f"UPDATE {table} SET {placeholders} WHERE {pk} = ?"
+    conn.execute(sql_query, tuple(data.values()) + (tid,))
 
 def delete_table_if_exists(conn:sqlite3.Connection, table: str) -> None:
     sql_query = f"DROP TABLE IF EXISTS {table}"
     conn.execute(sql_query)
+
+def mark_processed():
+    pass
+
+def processed_exists(conn, job_id, version):
+    pass

@@ -1,6 +1,6 @@
-from .retrieval.scrape import fetch_html, random_sleep
-from .retrieval.data_processing import extract_stash_text, extract_jobs_from_stash, strip_html
-from .database import upsert, get_connection
+from .scrape import fetch_html, random_sleep
+from .data_processing import extract_stash_text, extract_jobs_from_stash, strip_html
+from ..database import upsert, get_connection
 
 import logging
 
