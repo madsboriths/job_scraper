@@ -4,10 +4,31 @@ from pathlib import Path
 import json
 import re
 
+from openai import OpenAI
+from pathlib import Path
+import os
+
+API_KEY = os.environ["OPENAI_API_KEY"]
+client = OpenAI(api_key=API_KEY)
+
 STASH_RE = re.compile(r"var\s+Stash\s*=\s*(\{.*?\});", re.DOTALL)
 
 class StashNotFound(Exception): ...
 class JobsShapeError(Exception): ...
+
+def strip_html(html: str) -> str:
+    prompt_path = Path("prompts/prompt.txt")
+
+    with open(prompt_path, "r", encoding="utf-8") as file:
+        prompt = file.read().strip()
+    try:
+        response = client.responses.create(
+            model="gpt-5-nano",
+            input=f"{prompt}\n\nHTML:\n{html}",
+        )
+    except Exception as e:
+        raise RuntimeError(f"Failed to process HTML with OpenAI API: {e}") from e
+    return response.output_text.strip()
 
 def extract_stash_text(html_soup: BeautifulSoup) -> str:
     try:
@@ -40,3 +61,4 @@ def save_json(object: Dict[str, Any], path: Path) -> None:
 def load_json(path: Path) -> Dict[str, Any]:
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
+    

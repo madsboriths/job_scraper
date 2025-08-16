@@ -11,8 +11,8 @@ SQLITE_TYPE_MAP = {
     bool: "BOOLEAN",
 }
 
-def get_connection() -> sqlite3.Connection:
-    conn = sqlite3.connect(DATABASE_PATH)
+def get_connection(path: Path = DATABASE_PATH) -> sqlite3.Connection:
+    conn = sqlite3.connect(path)
     conn.row_factory = sqlite3.Row
     return conn
 

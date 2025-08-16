@@ -1,6 +1,5 @@
-from .scrape import fetch_html, random_sleep
-from .data_processing import extract_stash_text, extract_jobs_from_stash
-from .html_processing import strip_html
+from .retrieval.scrape import fetch_html, random_sleep
+from .retrieval.data_processing import extract_stash_text, extract_jobs_from_stash, strip_html
 from .database import upsert, get_connection
 
 import logging
@@ -42,6 +41,7 @@ def scrape_and_store(base_url, max_jobs=1, max_pages=1, starting_page=1):
                         }
                     except Exception as e:
                         logger.error(f"Error processing job {job['tid']}: {e}")
+                        num_jobs += 1
                         continue
                     upsert(conn, "jobs", "tid", job_data)
                     num_jobs += 1
