@@ -61,7 +61,7 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
 
     conn = get_connection()
-    with open("scripts/schema.sql", "r", encoding="utf-8") as file:
+    with open("schema.sql", "r", encoding="utf-8") as file:
         schema_sql = file.read()
         conn.executescript(schema_sql)
     cur = conn.execute("SELECT tid, title, description FROM jobs")
