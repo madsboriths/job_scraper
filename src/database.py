@@ -70,6 +70,10 @@ def delete_table_if_exists(conn:sqlite3.Connection, table: str) -> None:
     sql_query = f"DROP TABLE IF EXISTS {table}"
     conn.execute(sql_query)
 
+def clear_table(conn:sqlite3.Connection, table: str) -> None:
+    sql_query = f"DELETE FROM {table}"
+    conn.execute(sql_query)
+
 def mark_processed():
     pass
 

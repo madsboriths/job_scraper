@@ -1,0 +1,4 @@
+Extract entities from this job description:
+"""
+{{job_description_text}}
+"""

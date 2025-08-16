@@ -1,163 +1,147 @@
 {
-  "job_id": "schur_automation_software_engineer_horsens",
+  "job_id": "maersk_mci_system_engineer_tinglev",
   "roles": [
     {
-      "canonical": "software_engineer",
-      "raw": "Software Engineer",
-      "confidence": 0.92
-    },
-    {
-      "canonical": "automation_engineer",
-      "raw": "Automation Engineer",
-      "confidence": 0.65
+      "canonical": "system_engineer",
+      "raw": "System Engineer",
+      "confidence": 0.9
     }
   ],
   "skills": {
-    "languages": [],
-    "programming_languages": [
+    "languages": [
       {
-        "canonical": "ladder_logic",
-        "raw": "ladder logic",
-        "confidence": 0.7
+        "canonical": "english",
+        "raw": "English",
+        "confidence": 0.95
       },
       {
-        "canonical": "structured_text",
-        "raw": "structured text",
-        "confidence": 0.75
+        "canonical": "danish",
+        "raw": "Danish",
+        "confidence": 0.6
       }
     ],
-    "frameworks": [
-      {
-        "canonical": "scada_hmi",
-        "raw": "SCADA/HMI systems",
-        "confidence": 0.8
-      }
-    ],
+    "programming_languages": [],
+    "frameworks": [],
     "cloud": [],
     "databases": [],
-    "devops": [
-      {
-        "canonical": "version_control",
-        "raw": "versionsstyring",
-        "confidence": 0.8
-      }
-    ],
+    "devops": [],
     "bi_analytics": [],
     "ml_dl": [],
-    "data_tools": [
-      {
-        "canonical": "opc_ua",
-        "raw": "OPC UA",
-        "confidence": 0.9
-      },
-      {
-        "canonical": "modbus",
-        "raw": "Modbus",
-        "confidence": 0.9
-      },
-      {
-        "canonical": "profinet",
-        "raw": "Profinet",
-        "confidence": 0.9
-      }
-    ],
+    "data_tools": [],
     "platforms": [
       {
-        "canonical": "tia_portal",
-        "raw": "Siemens TIA Portal",
-        "confidence": 0.9
+        "canonical": "star_cool",
+        "raw": "Star Cool",
+        "confidence": 0.75
       },
       {
-        "canonical": "ecostruxure_machine_expert",
-        "raw": "Schneider EcoStruxure Machine Expert",
-        "confidence": 0.9
-      },
-      {
-        "canonical": "studio_5000",
-        "raw": "Rockwell Studio 5000",
-        "confidence": 0.9
+        "canonical": "star_freeze",
+        "raw": "Star Freeze",
+        "confidence": 0.75
       }
     ],
     "methodologies": [
       {
-        "canonical": "fat",
-        "raw": "FAT-tests",
-        "confidence": 0.8
-      },
-      {
-        "canonical": "sat",
-        "raw": "SAT-tests",
-        "confidence": 0.8
+        "canonical": "modeling_and_simulation",
+        "raw": "modeling and simulation",
+        "confidence": 0.6
       }
     ],
     "certifications": [],
     "soft_skill": [
       {
-        "canonical": "communication",
-        "raw": "kommunikere klart og præcist – både med kolleger og kunder",
-        "confidence": 0.78
+        "canonical": "systems_thinker",
+        "raw": "systems thinker",
+        "confidence": 0.85
       },
       {
-        "canonical": "hands_on",
-        "raw": "hands-on ude på kundens anlæg",
-        "confidence": 0.78
+        "canonical": "eye_for_detail",
+        "raw": "an eye for detail",
+        "confidence": 0.7
       },
       {
-        "canonical": "structured_work",
-        "raw": "struktureret arbejde",
+        "canonical": "mind_for_optimization",
+        "raw": "a mind for optimization",
+        "confidence": 0.75
+      },
+      {
+        "canonical": "complexity_to_clarity",
+        "raw": "turn complexity into clarity",
         "confidence": 0.65
       },
       {
-        "canonical": "problem_solving",
-        "raw": "løsningsorienteret tilgang til opgaverne",
-        "confidence": 0.72
+        "canonical": "great_communicator",
+        "raw": "a great communicator – technical but clear",
+        "confidence": 0.85
       },
       {
-        "canonical": "teamwork",
-        "raw": "samarbejde med kolleger",
+        "canonical": "team_player",
+        "raw": "a true team player with a sense of urgency and ownership",
+        "confidence": 0.8
+      },
+      {
+        "canonical": "sense_of_urgency",
+        "raw": "sense of urgency",
+        "confidence": 0.8
+      },
+      {
+        "canonical": "ownership",
+        "raw": "ownership",
+        "confidence": 0.75
+      },
+      {
+        "canonical": "problem_solving",
+        "raw": "problem-solving",
+        "confidence": 0.8
+      },
+      {
+        "canonical": "curious",
+        "raw": "curious",
+        "confidence": 0.6
+      },
+      {
+        "canonical": "structured",
+        "raw": "structured",
         "confidence": 0.7
+      },
+      {
+        "canonical": "sharp_minded",
+        "raw": "sharp-minded",
+        "confidence": 0.6
+      },
+      {
+        "canonical": "quality_conscious",
+        "raw": "quality-conscious",
+        "confidence": 0.65
+      },
+      {
+        "canonical": "results_driven",
+        "raw": "results-driven",
+        "confidence": 0.65
       }
     ],
     "other": [
       {
-        "canonical": "electrical_diagrams",
-        "raw": "el-diagrammer",
-        "confidence": 0.6
-      },
-      {
-        "canonical": "industrial_automation",
-        "raw": "industriel automation",
-        "confidence": 0.5
+        "canonical": "bsc_or_msc",
+        "raw": "B.Sc. or M.Sc.",
+        "confidence": 0.8
       }
     ]
   },
-  "other_notables": [
-    {
-      "canonical": "fanuc",
-      "raw": "Fanuc",
-      "type": "other",
-      "confidence": 0.85
-    },
-    {
-      "canonical": "universal_robots",
-      "raw": "UR",
-      "type": "other",
-      "confidence": 0.75
-    }
-  ],
+  "other_notables": [],
   "seniority": {
     "level": "unspecified",
     "confidence": 0.4
   },
   "employment": {
     "type": "full-time",
-    "confidence": 0.9
+    "confidence": 0.6
   },
   "location": {
-    "text": "Horsens, Denmark",
-    "remote": "no"
+    "text": "Tinglev, Denmark",
+    "remote": "unspecified"
   },
   "model_info": {
-    "version": "job_extraction_v1"
+    "version": "system_extractor_v1"
   }
 }

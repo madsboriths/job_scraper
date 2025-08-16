@@ -32,9 +32,7 @@ elements within entities are ALWAYS returned a list of dictionaries with:
 - "raw": the original text as found in the job description
 - "confidence": a float between 0 and 1 indicating confidence in the extraction
 
-Extract entities from this job description.
-
-Return JSON:
+ALWAYS return VALID JSON in the following format:
 {
   "job_id": "<string>",
   "roles": [{"canonical": "<string>", "raw": "<string>", "confidence": <float>}],
@@ -60,8 +58,3 @@ Return JSON:
   "location": {"text": "<string or ''>", "remote": "<yes|hybrid|no|unspecified>"},
   "model_info": {"version": "<your_tag>"}
 }
-
-description:
-"""
-{{job_description_text}}
-"""
